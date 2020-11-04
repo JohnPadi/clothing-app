@@ -2,7 +2,7 @@ import CartActionTypes from './cartTypes';
 import {addItemToCart} from './cart.util';
 
 const INITIAL_STATE ={
-	hidden: true, //ie. hide our dropdwon when it comes to the website.
+	hidden: true, 
 	cartItems: []
 };
 
