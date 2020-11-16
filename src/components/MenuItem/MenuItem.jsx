@@ -14,6 +14,6 @@ match}) => (
 				<span className='subtitle'>BUY NOW</span>
 			</div>
 		</div>
-	)
+	);
 
 export default withRouter(MenuItem);
