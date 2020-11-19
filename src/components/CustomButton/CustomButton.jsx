@@ -3,7 +3,7 @@ import './CustomButton.scss';
 
 const CustomButton = ({children, isGoogleSignIn, inverted, ...otherProps}) => (
 	<button className={`${inverted ? 'inverted' : ''} 
-		${isGoogleSignIn ? 'google-sign-in' : ''}custom-btn`} 
+		${isGoogleSignIn ? 'google-sign-in' : ''} custom-btn`} 
 		{...otherProps}>
 		{children}
 	</button>
