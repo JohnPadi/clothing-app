@@ -10,7 +10,7 @@ class SignIn extends React.Component{
 		this.state = {
 			email:'',
 			password:''
-		}
+		};
 	}
 
 	handleSubmit = async event => {
@@ -20,11 +20,12 @@ class SignIn extends React.Component{
 			await auth.signInWithEmailAndPassword(email, password);
 			this.setState({email:'', password:''})
 		} catch(error){console.log(error);}
-	}
+	};
+
 	handleChange = event => {
 		const {value, name} = event.target;
 		this.setState({[name]: value})
-	}
+	};
 
 	render(){
 		return(
@@ -41,13 +42,12 @@ class SignIn extends React.Component{
 					<div className='buttons'>
 						<CustomButton type='submit'>Sign in</CustomButton>
 						<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-						{' '}
-						Sign in with Google{' '}
+							Sign in with Google
 						</CustomButton>
 					</div>
 				</form>
 			</div>
-		)
+		);
 	}
 }
 

@@ -7,9 +7,11 @@ import Header from './components/Header/Header';
 import SignInAndSignUp from './pages/SignInAndSignUp/SignInAndSignUp';
 import {auth, createUserProfileDocument} from './firebase/firebase.util';
 import {connect} from 'react-redux';
+//import { createStructuredSelector } from 'reselect';
 import {setCurrentUser} from './redux/user/userActions';
+import {selectCurrentUser} from './redux/user/userSelectors';
 import Checkout from './pages/Checkout/Checkout';
-
+//import {selectCollectionsForPreview} from './redux/shop/shopSelectors';
 
 class App extends React.Component{
 	//constructor isn't needed anymore due to redux
@@ -40,6 +42,7 @@ class App extends React.Component{
 				}); 
 			}
 			setCurrentUser(userAuth);
+			//addCollectionAndDocuments('collections', collectionsArray);
 		});
 	}
 
@@ -54,6 +57,7 @@ class App extends React.Component{
       			<Switch>
       				<Route exact path='/' component={Homepage}/>
       				<Route path='/shop' component={Shop}/>
+      				<Route exact path='/checkout' component={Checkout}/>
       				<Route exact path='/signin' render={
       					() => this.props.currentUser ? (
       						<Redirect to='/'/>
@@ -62,7 +66,6 @@ class App extends React.Component{
       					)
       				}
       				/>
-      				<Route exact path='/checkout' component={Checkout}/>
      			 </Switch>
    			</div>
   );		
@@ -70,8 +73,9 @@ class App extends React.Component{
   
 }
 
-const mapStateToProps = ({user}) => ({
-	currentUser: user.currentUser
+const mapStateToProps = (state)/*({user})*/ => ({
+	currentUser: selectCurrentUser(state) //user.currentUser
+	
 });
 
 const mapDispatchToProps = dispatch => ({

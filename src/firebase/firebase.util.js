@@ -10,29 +10,42 @@ const config = {
     storageBucket: "crown-db-d3d7b.appspot.com",
     messagingSenderId: "44407604361",
     appId: "1:44407604361:web:9810205d5b53c6955df258",
-    measurementId: "G-YFP4VEEEDD"
-  }
+    //measurementId: "G-YFP4VEEEDD"
+  };
 
-  export const createUserProfileDocument = async(userAuth, additionalData) => {
+    firebase.initializeApp(config);
+
+  export const createUserProfileDocument = async (userAuth, additionalData) => {
   	if(!userAuth) return;
   	const userRef = firestore.doc(`users/${userAuth.uid}`);
   	const snapShot = await userRef.get();
-  	console.log(snapShot);
+  	//console.log(snapShot);
   	if(!snapShot.exists){
   		const {displayName,email} =userAuth;
   		const createdAt = new Date();
   		try{
   			await userRef.set({
   				displayName, email, createdAt, ...additionalData
-  			})
-  		}catch(error){
+  			});
+  		} catch(error){
   			console.log('Error creating user', error.message);
   		}
   	}
   	return userRef;
-  }
+  };
 
-  firebase.initializeApp(config);
+ //export const addCollectionAndDocuments = /*async*/ (collectionKey, objectsToAdd) => {
+   // const collectionRef = firestore.collection(collectionKey);
+ 
+    //const batch = firestore.batch();
+    //Object.keys(objectsToAdd).forEach(obj => {
+     // const newDocRef = collectionRef.doc();
+      //console.log(newDocRef);
+      //batch.set(newDocRef, obj);
+   // });
+    //return await batch.commit();
+ // };
+
 
   //For Google authentication:
   export const auth = firebase.auth();
