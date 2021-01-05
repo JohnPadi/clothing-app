@@ -20,6 +20,6 @@ const Collection = ({collection}) => {
 
 const mapStateToProps = (state, ownProps) => ({
 	collection: selectCollection(ownProps.match.params.collectionId)(state) //This is neccessary cuz unlike other selectors, this one needs a part of the state depending on the URL parameter.
-})
+});
 
 export default connect(mapStateToProps)(Collection);
