@@ -2,7 +2,6 @@ import React from 'react';
 import'./Header.scss';
 import {Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/crown.svg'; //special syntax in React for importing SVG.
-import {auth} from '../../firebase/firebase.util';
 import {connect} from 'react-redux';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropDown from '../CartDropDown/CartDropDown';
